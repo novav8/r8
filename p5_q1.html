@@ -44,38 +44,29 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Practical Slip 5 - Question 1</h1>
+    <h2>practical2</h2>
 
-        <img src="https://via.placeholder.com/700x300">
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-        <p>
-           <h3>Q1. Create a Wireless Network of Two or More PCs Using an Access Point</h3>
+<br><br>
 
-<p><strong>Aim:</strong><br>
-To create a wireless network of two or more PCs using an Access Point in Cisco Packet Tracer.</p>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
-<p><strong>Requirements:</strong><br>
-1 Access Point<br>
-2 or more PCs with wireless module
-</p>
+<script>
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
 
-<p><strong>Procedure:</strong><br>
-1. Place an Access Point and two or more PCs in Packet Tracer.<br>
-2. Configure SSID in the Access Point.<br>
-3. (Optional) Set wireless security such as WPA2 password.<br>
-4. On each PC, go to Desktop → PC Wireless and connect to the SSID.<br>
-5. Assign IP addresses (Static or DHCP).<br>
-6. Ensure all PCs are connected to the same network.
-</p>
+  navigator.clipboard.writeText(text);
 
-<p><strong>Result:</strong><br>
-The wireless network is successfully created using an Access Point.
-</p>
-        </p>
-
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
-    </div>
-
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
+}
+</script>
 </body>
 </html>
