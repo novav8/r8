@@ -48,93 +48,32 @@
         
 
       
+  <h2>practical2</h2>
 
-        <p>
-           <h2>Practical</h2>
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-<h3>Aim:</h3>
-<p>
-To study the working of Light Sensor using Arduino.
-</p>
+<br><br>
 
-<h3>Simulation Environment:</h3>
-<p>
-TinkerCAD (Free online simulator)
-</p>
-
-<h3>Components:</h3>
-<p>
-Arduino UNO<br>
-LED<br>
-Photodiode<br>
-Resistors
-</p>
-
-<h3>Theory:</h3>
-<p>
-The goal of this practical is to create a system that can automatically control the brightness of an LED based on the light detected by a photodiode. This project uses the principles of light sensing and feedback control.
-</p>
-
-<h3>Components Description:</h3>
-<p>
-a) <strong>Photodiode:</strong> A light-sensitive semiconductor device that generates current or voltage proportional to the light intensity. It acts as the input sensor in this system.<br><br>
-
-b) <strong>LED:</strong> A Light Emitting Diode used as the output device. It emits light and its brightness can be controlled.<br><br>
-
-c) <strong>Arduino:</strong> The Arduino microcontroller reads data from the photodiode, processes it, and controls the LED's brightness accordingly.
-</p>
-
-<h3>Working:</h3>
-<p>
-a) <strong>Photodiode Operation:</strong><br>
-The photodiode is connected to one of the Arduino's analog input pins. When exposed to light, it generates a voltage proportional to light intensity. Arduino reads this analog value.
-</p>
-
-<p>
-b) <strong>Control Algorithm:</strong><br>
-Arduino converts the analog reading into a control signal for the LED. More light results in higher LED brightness and less light reduces brightness.
-</p>
-
-<p>
-c) <strong>Feedback Loop:</strong><br>
-The system continuously monitors light intensity. Arduino processes the data and adjusts LED brightness in real-time based on the photodiode input.
-</p>
-
-<h3>Result:</h3>
-<p>
-The brightness of the LED was successfully controlled using a photodiode and Arduino based on light intensity.
-</p>
-        </p><hr>
-        <div>
-            <button onclick="copyText()"> Copy the code </button>
-            <div id="copyText">
-<pre><code>
-int SensorValue = 0;
-
-void setup() {
-  pinMode(A0, INPUT);
-  pinMode(9, OUTPUT);
-  Serial.begin(9600);
-}
-
-void loop() {
-  SensorValue = analogRead(A0);
-  Serial.println(SensorValue);
-  analogWrite(9, map(SensorValue, 0, 1023, 255, 0));
-  delay(100);
-}
-</code></pre></div> <hr>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
 <script>
-function copyText() {
-    var text = document.getElementById("copyText").innerText;
-    navigator.clipboard.writeText(text);
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
+
+  navigator.clipboard.writeText(text);
+
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
 }
 </script>
-  <img src="pra1.png">
-        </div>
-
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
