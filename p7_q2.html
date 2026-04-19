@@ -45,30 +45,32 @@
 <body>
 
     <div class="container">
-        <h1>Practical Slip 7 - Question 2</h1>
+        <h2>practical2</h2>
 
-        <img src="https://via.placeholder.com/700x300">
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-        <p>
-            <h3>Q2. Display and Write IP Address, Subnet Mask and Default Gateway of Any Two PCs</h3>
+<br><br>
 
-<p><strong>Aim:</strong><br>
-To display IP configuration details of any two PCs.
-</p>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
-<p><strong>Procedure:</strong><br>
-1. Open any PC → Desktop → Command Prompt.<br>
-2. Type: ipconfig<br>
-3. Note the IP Address, Subnet Mask, and Default Gateway.<br>
-4. Repeat the same steps for another PC.
-</p>
+<script>
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
 
-<p><strong>Result:</strong><br>
-IP Address, Subnet Mask, and Default Gateway of two PCs were successfully displayed.
-</p>
-        </p>
+  navigator.clipboard.writeText(text);
 
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
+}
+</script>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
