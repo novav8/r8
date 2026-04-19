@@ -47,108 +47,32 @@
     <div class="container">
         
 
-      
+  <h2>practical2</h2>
 
-        <p>
-           <h2>Practica</h2>
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-<h3>Aim:</h3>
-<p>
-To study the working of Humidity sensors using Arduino.
-</p>
+<br><br>
 
-<h3>Simulation Environment:</h3>
-<p>
-TinkerCAD (Free online simulator)
-</p>
-
-<h3>Components:</h3>
-<p>
-Arduino UNO<br>
-Potentiometer (wiper)
-</p>
-
-<h3>Theory:</h3>
-
-<p><strong>Potentiometer as a Sensor:</strong><br>
-A potentiometer, often referred to as a "pot," is a variable resistor with three terminals. 
-It consists of a resistive track and a wiper that moves along the track. By adjusting the wiper's position, you can vary the resistance. 
-In this demonstration, the potentiometer is used to simulate a variable sensor input.
-</p>
-
-<p><strong>Arduino:</strong><br>
-Arduino is a versatile microcontroller platform commonly used for various electronic projects. 
-It can read analog voltage levels from sensors, including potentiometers, and convert them into digital values for processing.
-</p>
-
-<p><strong>TinkerCAD:</strong><br>
-TinkerCAD is a web-based platform for simulating and designing electronic circuits and Arduino-based projects. 
-It is an excellent tool for testing and prototyping virtually, even when physical components are unavailable.
-</p>
-
-<p><strong>Demo Overview:</strong><br>
-In this demo, we learn how to connect a potentiometer to an Arduino board in the TinkerCAD environment. 
-We understand the wiring and connections required to read variable resistance values from the potentiometer accurately.
-</p>
-
-<p><strong>Programming:</strong><br>
-We see how to write the code to read and convert the analog voltage from the potentiometer into digital values and display the humidity.
-</p>
-
-<p><strong>Practical Applications:</strong><br>
-While the potentiometer does not directly measure humidity, we observe how variable sensor inputs are used in applications like volume control, dimmer switches, and other scenarios where adjustable values are required. 
-The demo provides hands-on experience in interfacing a potentiometer with an Arduino, which can be valuable for various electronic projects.
-</p>
-
-<h3>Conclusion:</h3>
-<p>
-Understanding how to read analog values and convert them into digital format is a fundamental aspect of working with sensors and input devices. 
-This demonstration provides insight into the practical applications of potentiometers in real-world scenarios and interfacing variable sensors with Arduino.
-</p>
-
-</p>
-        </p><hr>
-        <div>
-            <button onclick="copyText()"> Copy the code </button>
-            <div id="copyText">
-<pre><code>
-/* 
-This code records the humidity using a simulated 
-potentiometer. 
-The Humidity is simulated by mapping the potentiometer 
-output into percentages. 
-*/
-
-const int analogIn = A1; // Connect the humidity sensor to this pin
-int humiditySensorOutput = 0;
-
-void setup() {
-  Serial.begin(9600);
-}
-
-void loop() {
-  humiditySensorOutput = analogRead(analogIn);
-
-  int humidityPercentage = map(humiditySensorOutput, 0, 1023, 10, 70);
-
-  Serial.print("Humidity: ");  // Printing out Humidity Percentage
-  Serial.print(humidityPercentage);
-  Serial.println("%");
-
-  delay(5000);  // Iterate every 5 seconds
-}
-</code></pre></div> <hr>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
 <script>
-function copyText() {
-    var text = document.getElementById("copyText").innerText;
-    navigator.clipboard.writeText(text);
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
+
+  navigator.clipboard.writeText(text);
+
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
 }
 </script>
-  <img src="pra2.png">
-        </div>
-
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
