@@ -45,48 +45,32 @@
 <body>
 
     <div class="container">
-        <h1>Practical Slip 6 - Question 1</h1>
+          <h2>practical2</h2>
 
-        <img src="https://via.placeholder.com/700x300">
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-        <p>
-            <h3>Q1. Configure a DHCP Server Network and Connect a Client PC</h3>
+<br><br>
 
-<p><strong>Aim:</strong><br>
-To configure a DHCP server and assign IP address automatically to a client PC.</p>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
-<p><strong>Requirements:</strong><br>
-1 Server<br>
-1 Switch<br>
-1 PC<br>
-Straight-through cables</p>
+<script>
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
 
-<p><strong>Procedure:</strong></p>
+  navigator.clipboard.writeText(text);
 
-<p>
-1. Place Server, Switch and PC in Packet Tracer.<br>
-2. Connect Server to Switch using straight-through cable.<br>
-3. Connect PC to Switch using straight-through cable.<br>
-4. Click on Server → Desktop → IP Configuration.<br>
-&nbsp;&nbsp;&nbsp;IP Address: 192.168.1.1<br>
-&nbsp;&nbsp;&nbsp;Subnet Mask: 255.255.255.0<br>
-5. Go to Server → Services → DHCP.<br>
-&nbsp;&nbsp;&nbsp;Turn DHCP Service: ON<br>
-&nbsp;&nbsp;&nbsp;Pool Name: LAN<br>
-&nbsp;&nbsp;&nbsp;Default Gateway: 192.168.1.1<br>
-&nbsp;&nbsp;&nbsp;DNS Server: 8.8.8.8<br>
-&nbsp;&nbsp;&nbsp;Start IP Address: 192.168.1.10<br>
-&nbsp;&nbsp;&nbsp;Subnet Mask: 255.255.255.0<br>
-&nbsp;&nbsp;&nbsp;Click Add<br>
-6. Click on PC → Desktop → IP Configuration.<br>
-&nbsp;&nbsp;&nbsp;Select DHCP.
-</p>
-
-<p><strong>Result:</strong><br>
-The client PC receives IP address automatically from the DHCP server.</p>
-        </p>
-
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
+}
+</script>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
