@@ -45,33 +45,32 @@
 <body>
 
     <div class="container">
-        <h1>Practical Slip 10 - Question 1</h1>
+      <h2>practical2</h2>
 
-        <img src="https://via.placeholder.com/700x300">
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-        <p>
-            
-<h3>Q1. Verify IP Allocation Using: ipconfig or ifconfig</h3>
+<br><br>
 
-<p><strong>Aim:</strong><br>
-To verify IP address allocation using ipconfig (Windows) or ifconfig (Linux).
-</p>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
-<p><strong>Procedure:</strong><br>
-1. Open Command Prompt (Windows) or Terminal (Linux).<br>
-2. Type the command:<br>
-&nbsp;&nbsp;&nbsp;ipconfig (for Windows)<br>
-&nbsp;&nbsp;&nbsp;ifconfig (for Linux)<br>
-3. Press Enter.<br>
-4. Check the displayed IP Address, Subnet Mask, and Default Gateway.
-</p>
+<script>
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
 
-<p><strong>Result:</strong><br>
-The IP configuration details were successfully displayed and verified.
-</p>
-        </p>
+  navigator.clipboard.writeText(text);
 
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
+}
+</script>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
