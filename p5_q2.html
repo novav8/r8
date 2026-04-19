@@ -45,29 +45,30 @@
 <body>
 
     <div class="container">
-        <h1>Practical Slip 5 - Question 2</h1>
+  <h2>practical2</h2>
 
-        <img src="https://via.placeholder.com/700x300">
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-        <p>
-            <h3>Q2. Verify Connectivity Using Ping Command and Note the Output</h3>
+<br><br>
 
-<p><strong>Aim:</strong><br>
-To verify connectivity between the PCs using ping command.</p>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
-<p><strong>Procedure:</strong><br>
-1. Open Command Prompt on any PC.<br>
-2. Type: ping &lt;IP address of another PC&gt;<br>
-3. Press Enter.<br>
-4. Check for "Reply from" messages.
-</p>
+<script>
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
 
-<p><strong>Result:</strong><br>
-Successful reply messages confirm that the connectivity between PCs is working properly.
-</p>
-        </p>
+  navigator.clipboard.writeText(text);
 
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
+}
+</script>
     </div>
 
 </body>
