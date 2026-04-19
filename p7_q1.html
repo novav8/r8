@@ -45,41 +45,32 @@
 <body>
 
     <div class="container">
-        <h1>Practical Slip 7 - Question 1</h1>
+          <h2>practical2</h2>
 
-        <img src="https://via.placeholder.com/700x300">
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-        <p>
-           
-<h3>Q1. Create a Network of 5 PCs Using DHCP</h3>
+<br><br>
 
-<p><strong>Aim:</strong><br>
-To create a network of 5 PCs using DHCP in Cisco Packet Tracer.
-</p>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
-<p><strong>Requirements:</strong><br>
-1 Server (DHCP enabled)<br>
-1 Switch<br>
-5 PCs<br>
-Straight-through cables
-</p>
+<script>
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
 
-<p><strong>Procedure:</strong><br>
-1. Place one Server, one Switch, and five PCs in Packet Tracer.<br>
-2. Connect all PCs and Server to the Switch using straight-through cables.<br>
-3. Configure Server with a static IP address (e.g., 192.168.1.1).<br>
-4. Go to Server → Services → DHCP and turn DHCP service ON.<br>
-5. Create a DHCP pool (set default gateway, subnet mask, start IP address).<br>
-6. On each PC, go to Desktop → IP Configuration and select DHCP.<br>
-7. Verify that all PCs receive IP addresses automatically.
-</p>
+  navigator.clipboard.writeText(text);
 
-<p><strong>Result:</strong><br>
-All 5 PCs successfully received IP addresses using DHCP.
-</p>
-        </p>
-
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
+}
+</script>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
