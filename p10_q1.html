@@ -48,7 +48,7 @@
       <h2>    a) Write a PL/SQL block using static SQL to retrieve employee details
     SET SERVEROUTPUT ON;  -- Make sure DBMS_OUTPUT is enabled</h2>
 
-<textarea id="code1">DECLARE
+<textarea id="code1" rows="10" cols="80">DECLARE
     -- Variables to hold employee details
     v_emp_id    NUMBER;
     v_fname     VARCHAR2(50);
@@ -78,7 +78,7 @@ END;
 <br><br>
 <h2>    b) Use a cursor expression inside a SELECT query to fetch nested cursor results
 SET SERVEROUTPUT ON;</h2>
-<textarea id="code2">DECLARE
+<textarea id="code2" rows="10" cols="80">DECLARE
     -- Nested cursor type
     TYPE emp_refcur IS REF CURSOR;
     v_emp_cursor emp_refcur;
