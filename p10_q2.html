@@ -45,10 +45,49 @@
 <body>
 
     <div class="container">
-         <h2>practical2</h2>
+         <h2>    A) Perform a transaction using INSERT, UPDATE, and DELETE, and control it with COMMIT and    
+ROLLBACK.</h2>
 
 <textarea id="codeBox" rows="10" cols="80">
-Apna code yaha daal bhai 😎
+CREATE TABLE employee_txn (
+    emp_id NUMBER,
+    emp_name VARCHAR2(50),
+    salary NUMBER
+);
+SET SERVEROUTPUT ON;
+
+BEGIN
+    -- INSERT operation
+    INSERT INTO employee_txn VALUES (1, 'Amit', 30000);
+    INSERT INTO employee_txn VALUES (2, 'Neha', 35000);
+
+    DBMS_OUTPUT.PUT_LINE('Records inserted.');
+
+    -- UPDATE operation
+    UPDATE employee_txn
+    SET salary = salary + 5000
+    WHERE emp_id = 1;
+
+    DBMS_OUTPUT.PUT_LINE('Salary updated.');
+
+    -- DELETE operation
+    DELETE FROM employee_txn
+    WHERE emp_id = 2;
+
+    DBMS_OUTPUT.PUT_LINE('Record deleted.');
+
+    -- Commit the transaction
+    COMMIT;
+
+    DBMS_OUTPUT.PUT_LINE('Transaction committed successfully.');
+
+EXCEPTION
+    WHEN OTHERS THEN
+        -- Rollback if any error occurs
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('Error occurred. Transaction rolled back.');
+END;
+/
 </textarea>
 
 <br><br>
