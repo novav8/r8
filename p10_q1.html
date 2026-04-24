@@ -45,27 +45,84 @@
 <body>
 
     <div class="container">
-      <h2>practical2</h2>
+      <h2>    a) Write a PL/SQL block using static SQL to retrieve employee details
+    SET SERVEROUTPUT ON;  -- Make sure DBMS_OUTPUT is enabled</h2>
 
-<textarea id="codeBox" rows="10" cols="80">
-Apna code yaha daal bhai 😎
-</textarea>
+<textarea id="code1">DECLARE
+    -- Variables to hold employee details
+    v_emp_id    NUMBER;
+    v_fname     VARCHAR2(50);
+    v_lname     VARCHAR2(50);
+    v_salary    NUMBER;
+BEGIN
+    -- Static SQL query
+    SELECT employee_id, first_name, last_name, salary
+    INTO v_emp_id, v_fname, v_lname, v_salary
+    FROM hr.employees         -- Using HR schema
+    WHERE employee_id = 100;  -- Example: employee with ID 100
+
+    -- Display the results
+    DBMS_OUTPUT.PUT_LINE('Employee ID : ' || v_emp_id);
+    DBMS_OUTPUT.PUT_LINE('Name        : ' || v_fname || ' ' || v_lname);
+    DBMS_OUTPUT.PUT_LINE('Salary      : ' || v_salary);
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('No employee found with the given ID.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLERRM);
+END;
+/</textarea>
+<button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
+<h2>    b) Use a cursor expression inside a SELECT query to fetch nested cursor results
+SET SERVEROUTPUT ON;</h2>
+<textarea id="code2">DECLARE
+    -- Nested cursor type
+    TYPE emp_refcur IS REF CURSOR;
+    v_emp_cursor emp_refcur;
 
-<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
+    -- Variables to hold employee info
+    v_emp_id   hr.employees.employee_id%TYPE;
+    v_fname    hr.employees.first_name%TYPE;
+    v_lname    hr.employees.last_name%TYPE;
+    v_salary   hr.employees.salary%TYPE;
+BEGIN
+    -- Loop through all departments
+    FOR dept_rec IN (SELECT department_id, department_name FROM hr.departments ORDER BY department_id) LOOP
+        DBMS_OUTPUT.PUT_LINE('Department: ' || dept_rec.department_name);
+
+        -- Open a REF CURSOR for employees in this department
+        OPEN v_emp_cursor FOR
+            SELECT employee_id, first_name, last_name, salary
+            FROM hr.employees
+            WHERE department_id = dept_rec.department_id
+            ORDER BY employee_id;
+
+        -- Loop through employees using the REF CURSOR
+        LOOP
+            FETCH v_emp_cursor INTO v_emp_id, v_fname, v_lname, v_salary;
+            EXIT WHEN v_emp_cursor%NOTFOUND;
+            DBMS_OUTPUT.PUT_LINE('  Employee: ' || v_fname || ' ' || v_lname || ' | Salary: ' || v_salary);
+        END LOOP;
+
+        CLOSE v_emp_cursor;  -- Always close the REF CURSOR
+    END LOOP;
+END;
+/</textarea>
+<button onclick="copyCode('code2', this)">Copy</button>
 
 <script>
-function copyCode() {
-  let text = document.getElementById("codeBox").value;
-  let btn = document.getElementById("copyBtn");
+function copyCode(id, btn) {
+  let text = document.getElementById(id).value;
 
   navigator.clipboard.writeText(text);
 
   btn.innerText = "✅ Copied!";
   
   setTimeout(() => {
-    btn.innerText = "📋 Copy Code";
+    btn.innerText = "📋 Copy";
   }, 2000);
 }
 </script>
