@@ -45,82 +45,61 @@
 <body>
 
     <div class="container">
-  <h2> a. Create a class that handles single and two-dimensional arrays. Demonstrate storing and displaying array data using class methods.</h2>
+        <h2>4.Stored Procedures: </h2>
+  <h2> a) Create a stored procedure that accepts two numbers and prints their sum</h2>
 
-<textarea id="codeBox" rows="10" cols="80">
-#include <iostream.h>
-#include <conio.h>
-
-class arraydemo
-{
-    int arr1[5];
-    int arr2[2][3];
-    int i, j;
-
-public:
-    void setdata()
-    {
-        // Single dimensional array
-        for (i = 0; i < 5; i++)
-        {
-            arr1[i] = i + 1;
-        }
-
-        // Two dimensional array
-        for (i = 0; i < 2; i++)
-        {
-            for (j = 0; j < 3; j++)
-            {
-                arr2[i][j] = (i + 1) * (j + 1);
-            }
-        }
-    }
-
-    void displaydata()
-    {
-        cout << "Single Dimensional Array:" << endl;
-        for (i = 0; i < 5; i++)
-        {
-            cout << arr1[i] << " ";
-        }
-
-        cout << endl << endl;
-        cout << "Two Dimensional Array:" << endl;
-        for (i = 0; i < 2; i++)
-        {
-            for (j = 0; j < 3; j++)
-            {
-                cout << arr2[i][j] << " ";
-            }
-            cout << endl;
-        }
-    }
-};
-
-void main()
-{
-    clrscr();
-    arraydemo a;
-    a.setdata();
-    a.displaydata();
-    getch();
-}</textarea>
+<textarea id="code1">CREATE OR REPLACE PROCEDURE calc_sum (
+    num1 IN NUMBER,
+    num2 IN NUMBER
+)
+IS
+    total NUMBER;
+BEGIN
+    total := num1 + num2;
+    DBMS_OUTPUT.PUT_LINE('Sum = ' || total);
+END;
+/
+Execute the procedure
+BEGIN
+    calc_sum(10, 5);
+END;
+/</textarea>
+<button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
+<h2>b) Alter the procedure to also calculate the difference.</h2>
+<textarea id="code2">CREATE OR REPLACE PROCEDURE calc_sum (
+    num1 IN NUMBER,
+    num2 IN NUMBER
+)
+IS
+    total NUMBER;
+    diff  NUMBER;
+BEGIN
+    total := num1 + num2;
+    diff  := num1 - num2;
 
-<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
+    DBMS_OUTPUT.PUT_LINE('Sum = ' || total);
+    DBMS_OUTPUT.PUT_LINE('Difference = ' || diff);
+END;
+/
+Execute the altered procedure
+BEGIN
+    calc_sum(20, 8);
+END;
+/</textarea>
+<button onclick="copyCode('code2', this)">Copy</button>
 
 <script>
-function copyCode() {
-  let text = document.getElementById("codeBox").value;
-  let btn = document.getElementById("copyBtn");
+function copyCode(id, btn) {
+  let text = document.getElementById(id).value;
 
   navigator.clipboard.writeText(text);
 
   btn.innerText = "✅ Copied!";
   
   setTimeout(() => {
-    btn.innerText = "📋 Copy Code";
+    btn.innerText = "📋 Copy";
   }, 2000);
 }
 </script>
