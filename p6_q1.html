@@ -45,47 +45,57 @@
 <body>
 
     <div class="container">
-          <h2>a. Use the scope resolution operator to declare variables at different scope levels. Display and compare the values of variables with different scopes.</h2>
+        <h2> 5.Functions and Recursion:</h2>
+          <h2>a) Function to return the square of a number</h2>
 <textarea id="code1" rows="10" cols="80">
-#include <iostream.h>
-#include <conio.h>
-
-// Global variable
-int x = 10;
-
-class Demo
-{
-public:
-    // Class variable
-    int x;
-
-    void show()
-    {
-        // Local variable
-        int x = 30;
-
-        cout << "Local variable x = " << x << endl;
-        cout << "Class variable x = " << this->x << endl;
-        cout << "Global variable x = " << ::x << endl;
-    }
-};
-
-void main()
-{
-    clrscr();
-
-    Demo obj;
-    obj.x = 20;   // Assign value to class variable
-
-    obj.show();
-
-    getch();
-}
+CREATE OR REPLACE FUNCTION square_num (
+    n IN NUMBER
+)
+RETURN NUMBER
+IS
+BEGIN
+    RETURN n * n;
+END;
+/
 </textarea>
 <button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
-      
+        <h2>b) Recursive function to calculate factorial of a number</h2>
+   <textarea id="code2">CREATE OR REPLACE FUNCTION factorial (
+    n IN NUMBER
+)
+RETURN NUMBER
+IS
+BEGIN
+    IF n = 0 OR n = 1 THEN
+        RETURN 1;
+    ELSE
+        RETURN n * factorial(n - 1);
+    END IF;
+END;
+/</textarea>
+<button onclick="copyCode('code2', this)">Copy</button>
+
+<br><br>
+        <h2>c) Call the functions from another PL/SQL block and print the result</h2>
+        <textarea id="code3">SET SERVEROUTPUT ON;
+
+DECLARE
+    num NUMBER := 5;
+    sq  NUMBER;
+    fact NUMBER;
+BEGIN
+    sq := square_num(num);
+    fact := factorial(num);
+
+    DBMS_OUTPUT.PUT_LINE('Square of ' || num || ' = ' || sq);
+    DBMS_OUTPUT.PUT_LINE('Factorial of ' || num || ' = ' || fact);
+END;
+/</textarea>
+<button onclick="copyCode('code3', this)">Copy</button>
+
+<br><br>
 <script>
 function copyCode(id, btn) {
   let text = document.getElementById(id).value;
