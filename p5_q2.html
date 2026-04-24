@@ -48,7 +48,8 @@
         <h2>4.Stored Procedures: </h2>
   <h2> a) Create a stored procedure that accepts two numbers and prints their sum</h2>
 
-<textarea id="code1">CREATE OR REPLACE PROCEDURE calc_sum (
+<textarea id="code1"  rows="10" cols="80">
+    CREATE OR REPLACE PROCEDURE calc_sum (
     num1 IN NUMBER,
     num2 IN NUMBER
 )
@@ -63,12 +64,14 @@ Execute the procedure
 BEGIN
     calc_sum(10, 5);
 END;
-/</textarea>
+/
+</textarea>
 <button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
 <h2>b) Alter the procedure to also calculate the difference.</h2>
-<textarea id="code2">CREATE OR REPLACE PROCEDURE calc_sum (
+<textarea id="code2"  rows="10" cols="80">
+    CREATE OR REPLACE PROCEDURE calc_sum (
     num1 IN NUMBER,
     num2 IN NUMBER
 )
@@ -87,7 +90,8 @@ Execute the altered procedure
 BEGIN
     calc_sum(20, 8);
 END;
-/</textarea>
+/
+</textarea>
 <button onclick="copyCode('code2', this)">Copy</button>
 
 <script>
